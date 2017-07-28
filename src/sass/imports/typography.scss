@@ -1,0 +1,76 @@
+body {
+  font-size: 16px;
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    font-size: 18px;
+  }
+}
+
+@mixin core($size) {
+  font-size: $size + em;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  text-decoration: none;
+  color: #000000;
+}
+
+@mixin bold($size) {
+  @include core($size);
+  font-weight: bold;
+}
+
+.core-12 {
+  @include core(0.8);
+}
+
+.core-16 {
+  @include core(1);
+}
+
+.core-18 {
+  @include core(1.2);
+}
+
+.core-24 {
+  @include core(1.4);
+}
+
+.core-36 {
+  @include core(1.8);
+}
+
+.bold-12 {
+  @include bold(0.8);
+}
+
+.bold-16 {
+  @include bold(1);
+}
+
+.bold-18 {
+  @include bold(1.2);
+}
+
+.bold-24 {
+  @include bold(1.4);
+}
+
+.bold-36 {
+  @include bold(1.8);
+}
+
+h1 {
+  @extend .bold-36;
+}
+
+div, p, span {
+  @extend .core-16;
+}
+
+a {
+  @extend .bold-16;
+  color: $green;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

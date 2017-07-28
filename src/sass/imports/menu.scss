@@ -1,0 +1,176 @@
+$animation-speed: .5s;
+$font-color: #ffffff;
+
+.navigation {
+  @extend %clearfix;
+}
+
+#navigation-container {
+  padding: 0;
+  height: 60px;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    height: auto;
+    max-height: 0;
+    border-bottom: 3px solid $header;
+  }
+}
+
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation li {
+  box-sizing: border-box;
+  float: left;
+  width: percentage(1/6);
+  height: 50px;
+
+  &:hover {
+    height: 60px;
+  }
+
+  @mixin button($color) {
+    background-color: $color;
+    transition: background-color $animation-speed,
+    color $animation-speed,
+    height $animation-speed;
+
+    &:hover {
+      color: $font-color;
+      background-color: saturate($color, 15%);
+      border-bottom: 4px solid $color;
+    }
+
+    @media screen and (max-width: $tablet-breakpoint) {
+      border-bottom: 2px solid #eeeeee;
+
+      &:hover {
+        border-bottom: 2px solid #eeeeee;
+      }
+    }
+
+    @media screen and (max-width: $mobile-breakpoint) {
+      border-bottom: 2px solid #eeeeee;
+      border-right: none;
+    }
+
+    &:last-of-type {
+
+      @media screen and (max-width: $tablet-breakpoint) {
+        border-bottom: none;
+      }
+
+      @media screen and (max-width: $mobile-breakpoint) {
+
+      }
+
+    }
+
+    &:nth-of-type(odd) {
+
+      @media screen and (max-width: $tablet-breakpoint) {
+        border-right: 2px solid #eeeeee;
+      }
+
+      @media screen and (max-width: $mobile-breakpoint) {
+        border-right: none;
+      }
+
+    }
+
+    &:nth-last-of-type(2) {
+
+      @media screen and (max-width: $tablet-breakpoint) {
+        border-bottom: none;
+      }
+
+      @media screen and (max-width: $mobile-breakpoint) {
+        border-bottom: 2px solid #eeeeee;
+      }
+
+    }
+  }
+
+  $button-color: #40b12a;
+  $increment-ammount: -0.08;
+
+  &:nth-child(6n + 1) {
+    @include button($button-color);
+  }
+
+  &:nth-child(6n + 2) {
+    @include button(adjust_hue($button-color, percentage($increment-ammount)));
+  }
+
+  &:nth-child(6n + 3) {
+    @include button(adjust_hue($button-color, percentage($increment-ammount*2)));
+  }
+
+  &:nth-child(6n + 4) {
+    @include button(adjust_hue($button-color, percentage($increment-ammount*3)));
+  }
+
+  &:nth-child(6n + 5) {
+    @include button(adjust_hue($button-color, percentage($increment-ammount*4)));
+  }
+
+  &:nth-child(6n + 6) {
+    @include button(adjust_hue($button-color, percentage($increment-ammount*5)));
+  }
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    width: 50%;
+    &:hover {
+      height: 50px;
+    }
+  }
+
+  @media screen and (max-width: $mobile-breakpoint) {
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+  }
+
+  & a {
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 1em;
+    color: $white;
+  }
+
+}
+#nav-control {
+  display: block;
+  font-size: inherit;
+  padding: 1em;
+  color: $white;
+  background-color: $header;
+  margin: 0 auto;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    border: none;
+  }
+}
+
+#nav-control-container {
+  @extend %clearfix;
+  display: none;
+
+  @media screen and (max-width: $tablet-breakpoint) {
+    display: block;
+  }
+}

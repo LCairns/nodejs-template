@@ -1,0 +1,49 @@
+code {
+  margin: 0 1em;
+  display: block;
+  padding: 1em;
+  background-color: $code;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+table {
+  padding: 0;
+  margin: 0 1em;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  & thead {
+  }
+
+  & tbody {
+    & tr {
+      &:nth-of-type(odd) {
+        background-color: $light-grey;
+      }
+    }
+  }
+
+  & td, & th {
+    padding: 1em;
+  }
+
+  & th {
+    @extend .bold-16;
+  }
+
+  & td {
+    @extend .core-16;
+  }
+}
+
+hr {
+  margin: 0 1em;
+}
+
+body {
+  display: table;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
