@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const DEV_MODE = require('./config').DEV_MODE;
 const Webpack = require('webpack');
 
 module.exports = {
@@ -7,6 +8,7 @@ module.exports = {
         filename: 'js/bundle.js',
         path: __dirname + '/build'
     },
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {
@@ -16,9 +18,21 @@ module.exports = {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [{
-                        loader: "css-loader"
+                        loader: "css-loader",
+                        options: {
+                            minimize: true,
+                            sourceMap: DEV_MODE
+                        }
                     }, {
-                        loader: "sass-loader"
+                        loader: "postcss-loader",
+                        options: {
+                            sourceMap: 'inline'
+                        }
+                    }, {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: DEV_MODE
+                        }
                     }],
                     fallback: 'style-loader'
                 })

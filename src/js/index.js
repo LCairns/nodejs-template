@@ -7,7 +7,10 @@ const navigationToggle = document.getElementById('nav-control');
 const navigationMenu = document.getElementById('navigation-container');
 let menuOpen = false;
 
-navigationToggle.addEventListener('touchend', () => {
+navigationToggle.addEventListener('touchend', (e) => {
+
+    e.preventDefault();
+
     if (menuOpen === true) {
         navigationMenu.style.maxHeight = '0';
         navigationToggle.textContent = 'Menu';
@@ -16,5 +19,6 @@ navigationToggle.addEventListener('touchend', () => {
         navigationToggle.textContent = 'Hide Menu';
     }
     menuOpen = !menuOpen;
+
 });
 
